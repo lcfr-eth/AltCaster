@@ -21,5 +21,5 @@ Gift warps to Alt account.
 Sign into alt account via warpcast by entering the seed phrase into warpcast.  
 Connect the account with gifted warps to warpcast and enjoy!  
 
-If you registered an fid but the fname was taken then you can set the fname with the following command
+If you registered an fid but the fname was taken then you can set the fname with the following command:  
 `cargo run -- --name somecoolname --fid 12345 --set-fname`
