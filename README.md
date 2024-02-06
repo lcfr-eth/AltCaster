@@ -12,7 +12,7 @@ Export the private key of the new wallet:
 
 Make sure the account is funded with some opETH
 
-`cargo run -- --name "illegal"`
+`cargo run -- --name "supercoolname"`
 
 Go to your main farcaster account.  
 Purchase warps.  
