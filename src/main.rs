@@ -9,15 +9,12 @@ use ethers::{
         utils::hex,
     },
 };
-
-
 use std::{
     time::{SystemTime, UNIX_EPOCH},
     str::FromStr,
     convert::TryFrom,
     sync::Arc,
 };
-
 use serde::{Serialize, Deserialize};
 use clap::Parser;
 use reqwest;
