@@ -114,35 +114,35 @@ async fn register_fid(signer: &SignerMiddleware<Arc<Provider<Http>>, LocalWallet
 }
 
 async fn register_name(wallet: &LocalWallet, client: &Arc<Provider<Http>>, name: &String, storage_size: u64) -> eyre::Result<()> {
-        let signer = 
-            SignerMiddleware::new(client.clone(), wallet.clone());
+    let signer = 
+        SignerMiddleware::new(client.clone(), wallet.clone());
             
-        // register FID to address
-        let fid = register_fid(&signer, U256::from(storage_size)).await?;
-        println!("Registered FID: {:?}", fid);
+    // register FID to address
+    let fid = register_fid(&signer, U256::from(storage_size)).await?;
+    println!("Registered FID: {:?}", fid);
         
-        // get the current epoch time   
-        let timestamp = get_timestamp()?;
+    // get the current epoch time   
+    let timestamp = get_timestamp()?;
 
-        // sign the registration eip712 hash
-        let signature = sign_register(wallet, name.to_string(), U256::from(timestamp)).await?;
+    // sign the registration eip712 hash
+    let signature = sign_register(wallet, name.to_string(), U256::from(timestamp)).await?;
 
-        let signature = format!("0x{}", signature);
-        let address = format!("{:?}", signer.address());
+    let signature = format!("0x{}", signature);
+    let address = format!("{:?}", signer.address());
         
-        // post the registration to the server claiming a "name" for the FID registered to our address
-        let body = TransferRequestBody {
-            from: 0,
-            to: fid.as_u64(),
-            fid: fid.as_u64(),
-            name: name.to_string(),
-            timestamp: timestamp,
-            owner: address,
-            signature: signature,
-        };
+    // post the registration to the server claiming a "name" for the FID registered to our address
+    let body = TransferRequestBody {
+        from: 0,
+        to: fid.as_u64(),
+        fid: fid.as_u64(),
+        name: name.to_string(),
+        timestamp: timestamp,
+        owner: address,
+        signature: signature,
+    };
 
-        post_register(body).await?;
-        Ok(())
+    post_register(body).await?;
+    Ok(())
 }
 
 async fn set_fname(wallet: &LocalWallet, name: &String, fid: U256) -> eyre::Result<()> {
