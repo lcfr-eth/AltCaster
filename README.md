@@ -13,7 +13,7 @@ Export the private key of the new wallet:
 `export PKEY=<private_key_from_cast>`  
 
 Make sure the account is funded with some opETH then run:  
-`cargo run -- --name "supercoolname"`
+`cargo run -- --name supercoolname`
 
 Go to your main farcaster account.  
 Purchase warps.  
